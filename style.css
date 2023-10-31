@@ -1,0 +1,149 @@
+body {
+    background-color: gray;
+    margin: 0;
+}
+
+#kaarten {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 50px;
+    height: 300px;
+}
+
+#dealerKaarten {
+    display: flex;
+    justify-content: center;
+    margin-top: -200px;
+}
+
+#playerKaarten {
+    display: flex;
+    justify-content: center;
+}
+
+.hit {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    font-size: xx-large;
+    border-radius: 45%;
+    position: absolute;
+    top: 25px;
+    left: 750px;
+    visibility: hidden;
+}
+
+img {
+    width: 150px;
+}
+.deal {
+    font-size: xx-large;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-color: lawngreen;
+    background-color: rgb(32, 167, 32);
+    color: white;
+    position: absolute;
+    top: 75px;
+    left: 50px;
+}
+#inzet {
+    font-size: xx-large;
+    position: absolute;
+    top: 75px;
+    right: 50px;
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: white;
+    border-color: white;
+}
+#stand {
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-color: blue;
+    background-color: blue;
+    color: white;
+    margin-top: 20px;
+    position: absolute;
+    top: 0px;
+    left: 50px;
+    visibility: hidden;
+}
+#again {
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 375px;
+    left: 50px;
+    visibility: hidden;
+    border-color: red;
+    background-color: red;
+    color: white;
+}
+.align {
+    display: flex;
+    align-items: baseline;
+    margin-top: 10px;
+}
+
+.chips {
+    display: flex;
+    justify-content: center;
+    margin-top: -200px;
+}
+
+#tekst {
+    font-size: xx-large;
+    padding: 20px;
+    background-color: green;
+    text-align: center;
+    margin: 0 auto;
+    width: 300px;
+    margin-top: 50px;
+    border-radius: 15px;
+    visibility: hidden;
+}
+
+
+#punten {
+    display: flex;
+    align-items: center;
+    font-size: xx-large;
+    margin-right: 20px;
+}
+.puntenkaarten{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+#dealerpunten {
+    display: flex;
+    align-items: center;
+    font-size: xx-large;
+    margin-right: 20px;
+    margin-top: -200px;
+}
+.dealerpuntenkaarten {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.img {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 400px;
+    margin-top: 20px;
+}
+.bank {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    font-size: xx-large;
+    color: white;
+}
