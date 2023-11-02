@@ -12,7 +12,7 @@ const deal = document.getElementById("deal");
 deal.disabled = true;
 
 let bankSaldo = localStorage.getItem("bankSaldo");
-if (bankSaldo === null) {
+if (bankSaldo === "0") {
     bankSaldo = 1000;
 }
 
@@ -73,6 +73,8 @@ function checkBlackjack() {
     if (totaalPunten === 21 && drawData.cards.length === 2) {
         tekst.innerHTML = `blackjack you won`;
         tekst.style.visibility = "visible";
+        bankSaldo = parseInt(bankSaldo) + inzet * 2.5;
+        updateBankSaldo();
         drawDealerCards(1);
         setTimeout(function () {
             document.getElementById("again").style.visibility = "visible";
@@ -96,7 +98,7 @@ function drawDealerCards(count) {
             if (dealerpunten > 21) {
                 tekst.innerHTML = `Dealer bust! you won`;
                 tekst.style.visibility = "visible";
-                parseInt(bankSaldo) + inzet;
+                bankSaldo = parseInt(bankSaldo) + inzet;
                 updateBankSaldo();
             }
         });
@@ -174,7 +176,7 @@ document.getElementById("stand").addEventListener('click', () => {
         } else if (totaalPunten > dealerpunten && dealerpunten > 16) {
             tekst.innerHTML = `you won`;
             tekst.style.visibility = "visible";
-            parseInt(bankSaldo) += inzet;
+            bankSaldo = parseInt(bankSaldo) + inzet;
             updateBankSaldo();
         }
     }
