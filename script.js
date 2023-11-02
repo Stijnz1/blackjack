@@ -31,22 +31,9 @@ function fetchDeckAndDrawCards() {
         });
 }
 
-function getKaartWaarde(kaart) {
-    const waarde = parseInt(kaart.value);
-    if (!isNaN(waarde)) {
-        return waarde;
-    } else if (["KING", "QUEEN", "JACK"].includes(kaart.value)) {
-        return 10;
-    } else if (kaart.value === "ACE") {
-        azenInHand++;
-        return 11;
-    } else {
-        return 10;
-    }
-}
 function getdealerKaartWaarde(kaart) {
-    const waarde = parseInt(kaart.value);
-    if (!isNaN(waarde)) {
+    const waarde = parseInt(kaart.value, 10);
+    if (!Number.isNaN(waarde)) {
         return waarde;
     } else if (["KING", "QUEEN", "JACK"].includes(kaart.value)) {
         return 10;
@@ -57,28 +44,10 @@ function getdealerKaartWaarde(kaart) {
         return 10;
     }
 }
-function checkAzen() {
-    if (totaalPunten > 21 && azenInHand > 0) {
-        totaalPunten -= 10;
-        azenInHand--;
-    }
-}
 function checkdealerAzen() {
     if (dealerpunten > 21 && dealerAzen > 0) {
         dealerpunten -= 10;
         dealerAzen--;
-    }
-}
-function checkBlackjack() {
-    if (totaalPunten === 21 && drawData.cards.length === 2) {
-        tekst.innerHTML = `blackjack you won`;
-        tekst.style.visibility = "visible";
-        bankSaldo = parseInt(bankSaldo) + inzet * 2.5;
-        updateBankSaldo();
-        drawDealerCards(1);
-        setTimeout(function () {
-            document.getElementById("again").style.visibility = "visible";
-        }, 1500);
     }
 }
 function drawDealerCards(count) {
@@ -98,10 +67,44 @@ function drawDealerCards(count) {
             if (dealerpunten > 21) {
                 tekst.innerHTML = `Dealer bust! you won`;
                 tekst.style.visibility = "visible";
-                bankSaldo = parseInt(bankSaldo) + inzet;
+                bankSaldo = parseInt(bankSaldo, 10) + inzet;
                 updateBankSaldo();
             }
         });
+}
+
+function getKaartWaarde(kaart) {
+    const waarde = parseInt(kaart.value, 10);
+    if (!Number.isNaN(waarde)) {
+        return waarde;
+    } else if (["KING", "QUEEN", "JACK"].includes(kaart.value)) {
+        return 10;
+    } else if (kaart.value === "ACE") {
+        azenInHand++;
+        return 11;
+    } else {
+        return 10;
+    }
+}
+
+function checkAzen() {
+    if (totaalPunten > 21 && azenInHand > 0) {
+        totaalPunten -= 10;
+        azenInHand--;
+    }
+}
+
+function checkBlackjack() {
+    if (totaalPunten === 21 && drawData.cards.length === 2) {
+        tekst.innerHTML = `blackjack you won`;
+        tekst.style.visibility = "visible";
+        bankSaldo = parseInt(bankSaldo, 10) + inzet * 2.5;
+        updateBankSaldo();
+        drawDealerCards(1);
+        setTimeout(function () {
+            document.getElementById("again").style.visibility = "visible";
+        }, 1500);
+    }
 }
 
 function drawCards(count) {
@@ -176,7 +179,7 @@ document.getElementById("stand").addEventListener('click', () => {
         } else if (totaalPunten > dealerpunten && dealerpunten > 16) {
             tekst.innerHTML = `you won`;
             tekst.style.visibility = "visible";
-            bankSaldo = parseInt(bankSaldo) + inzet;
+            bankSaldo = parseInt(bankSaldo, 10) + inzet;
             updateBankSaldo();
         }
     }
