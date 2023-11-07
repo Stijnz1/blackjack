@@ -12,7 +12,7 @@ const deal = document.getElementById("deal");
 deal.disabled = true;
 
 let bankSaldo = localStorage.getItem("bankSaldo");
-if (bankSaldo === "0") {
+if (bankSaldo === "0" || bankSaldo === null) {
     bankSaldo = 1000;
 }
 
@@ -168,7 +168,7 @@ document.getElementById("stand").addEventListener('click', () => {
         if (dealerpunten < 17) {
             drawDealerCards(1);
             setTimeout(drawDealerCardsUntil17, 1000);
-        } if (totaalPunten < dealerpunten && dealerpunten < 22) {
+        } if (totaalPunten < dealerpunten && dealerpunten < 22 && dealerpunten > 16) {
             tekst.innerHTML = `you lose`;
             tekst.style.visibility = "visible";
             bankSaldo -= inzet;
