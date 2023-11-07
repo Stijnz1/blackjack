@@ -98,7 +98,7 @@ function checkBlackjack() {
     if (totaalPunten === 21 && drawData.cards.length === 2) {
         tekst.innerHTML = `blackjack you won`;
         tekst.style.visibility = "visible";
-        bankSaldo = parseInt(bankSaldo, 10) + inzet * 2.5;
+        bankSaldo = parseInt(bankSaldo, 10) + inzet * 1.5;
         updateBankSaldo();
         drawDealerCards(1);
         setTimeout(function () {
@@ -219,6 +219,14 @@ document.getElementById("vijftig").addEventListener('click', () => {
 document.getElementById("honderd").addEventListener('click', () => {
     if (inzet + 100 <= bankSaldo) {
         inzet += 100;
+        document.getElementById("inzet").innerHTML = `inzet: ${inzet}`;
+        updateInzetButtonAvailability();
+        deal.disabled = false;
+    }
+});
+document.getElementById("allin").addEventListener('click', () => {
+    if (bankSaldo > 0) {
+        inzet = bankSaldo;
         document.getElementById("inzet").innerHTML = `inzet: ${inzet}`;
         updateInzetButtonAvailability();
         deal.disabled = false;
